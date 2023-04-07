@@ -6,8 +6,8 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Container maxW={'full'} p='0px'>
-      <Navbar/>
-      <MainRoues/>
+      <Navbar />
+      <MainRoues />
     </Container>
   );
 }

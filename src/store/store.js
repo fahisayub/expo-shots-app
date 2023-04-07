@@ -5,9 +5,9 @@ import { screenShotReducer } from "./screenShotReducer/screenShot.reducer";
 
 
 
-const rootReducer=combineReducers({
-    urlReducer:urlReducer,
-    screenShotReducer:screenShotReducer,
+const rootReducer = combineReducers({
+    urlReducer: urlReducer,
+    screenShotReducer: screenShotReducer,
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store =legacy_createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)))
+export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
