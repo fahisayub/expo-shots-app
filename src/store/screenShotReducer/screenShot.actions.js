@@ -9,6 +9,8 @@ export const getScreenShotApi = (payload) => async (dispatch) => {
         url += `${key}=${payload[key]}`
         url += '&'
     }
+    //Sample Url:"https://website-screenshot-api.exponential.host/?url=chakra-ui.com&capture_full_page=true&wait_until=domcontentloaded&delay=3000&export_format=png&device=laptop" \
+
 
     await axios.get(url, {
         headers: {
@@ -16,18 +18,12 @@ export const getScreenShotApi = (payload) => async (dispatch) => {
             'exponential_api_secret': `${process.env.REACT_APP_EXPONENTIAL_API}`
         }
     }).then((res) => {
-        const textEncoder = new TextEncoder();
-        const response = textEncoder.encode(res.data)
-
-        const blob = new Blob([response], { type: 'image/jpeg' });
-        let imageUrl = URL.createObjectURL(blob);
-        let url = imageUrl.trim().split(':')
-        url.shift()
-        url = url.join(':')
-        console.log(url)
-        //http://localhost:3000/bcc67586-5e54-4a41-bb6b-e70b4cfd4ab9
-        dispatch({ type: types.GET_SCREENSHOT_SUCCESS, payload: url });
         console.log(url);
+        const blob = new Blob([res.data], { type: 'image/jpeg' });
+        let imageUrl = URL.createObjectURL(blob);
+
+        console.log(imageUrl)
+        dispatch({ type: types.GET_SCREENSHOT_SUCCESS, payload: imageUrl });
     }).catch((err) => {
         dispatch({ type: types.GET_SCREENSHOT_FAILURE })
         console.log(err);

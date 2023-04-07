@@ -1,10 +1,4 @@
-import {
-  Box,
-  FormControl,
-  Input,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import UrlFilter from "./UrlFilter";
@@ -36,18 +30,16 @@ const UrlInput = () => {
   return (
     <Box m="auto" mt="100px" textAlign={"center"}>
       <InputGroup w="50%" m="auto" zIndex={1}>
-        <FormControl isRequired>
-          <Input
-            placeholder="Enter Website URL, eg: http://example.com"
-            name="url"
-            type="text"
-            size={"lg"}
-            textAlign="center"
-            variant={"filled"}
-            isRequired
-            onChange={onChangeHandler}
-          />
-        </FormControl>
+        <Input
+          placeholder="Enter Website URL ( eg: google.com )"
+          name="url"
+          type="text"
+          size={"lg"}
+          textAlign="center"
+          variant={"filled"}
+          isRequired
+          onChange={onChangeHandler}
+        />
         <InputRightElement m="5px">
           <UrlFilter onChangeHandler={onChangeHandler} />
         </InputRightElement>

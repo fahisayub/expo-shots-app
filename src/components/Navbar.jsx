@@ -3,9 +3,9 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <Flex p="10px" bg="green.600" m="0px">
+    <Flex p="10px" bgGradient="linear(to-r, teal.500, green.500)" m="0px">
       <Heading fontFamily={"sans-serif"} size={"md"} color={"white"}>
-        ExpoShot
+        EXPOShot
       </Heading>
     </Flex>
   );
