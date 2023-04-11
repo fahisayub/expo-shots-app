@@ -18,12 +18,16 @@ export const getScreenShotApi = (payload) => async (dispatch) => {
             'exponential_api_secret': `${process.env.REACT_APP_EXPONENTIAL_API}`
         }
     }).then((res) => {
-        console.log(url);
-        const blob = new Blob([res.data], { type: 'image/jpeg' });
-        let imageUrl = URL.createObjectURL(blob);
+        console.log(res);
+        const blob = new Blob([new Uint8Array(res.data)], { type: 'image/jpeg' });
 
-        console.log(imageUrl)
-        dispatch({ type: types.GET_SCREENSHOT_SUCCESS, payload: imageUrl });
+    // Create a data URL from the Blob
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+      dispatch({ type: types.GET_SCREENSHOT_SUCCESS, payload: reader.result });
+      console.log(reader.result)
+    };
     }).catch((err) => {
         dispatch({ type: types.GET_SCREENSHOT_FAILURE })
         console.log(err);
